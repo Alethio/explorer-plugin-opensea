@@ -1,0 +1,10 @@
+{
+    "pages": [{
+        "def": "page://aleth.io/account",
+        "children": {
+            "bottom": [{
+                "def": "module://aleth.io/opensea/assets/overview"
+            }]
+        }
+    }]
+}

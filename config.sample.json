@@ -1,0 +1,6 @@
+{
+    "apiBaseUrl": "https://api.opensea.io",
+    "apiKey": "<api_key>",
+    "assetUrlMask": "https://opensea.io/assets/{contractAddress}/{tokenId}",
+    "accountUrlMask": "https://opensea.io/accounts/{accountAddress}"
+}
