@@ -19,7 +19,7 @@ const AccordionContentWrapper = styled.div`
     margin-top: 16px;
 `;
 
-const CARD_WIDTH = 120;
+const CARD_WIDTH = 200;
 const CARD_SPACING = 16;
 const MAX_CARDS_PER_ROW = 5;
 
@@ -39,7 +39,7 @@ const Card = styled.div`
     border-radius: 4px;
     background-color: ${props => props.theme.colors.base.bg.alt};
     width: ${CARD_WIDTH}px;
-    height: 186px;
+    height: ${CARD_WIDTH + 66}px;
     flex-shrink: 0;
 `;
 
