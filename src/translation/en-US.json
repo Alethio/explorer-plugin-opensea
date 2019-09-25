@@ -1,5 +1,5 @@
 {
-    "viewAll.label": "View all on OpenSea",
+    "viewAll.label": "View all on {openSeaLink}",
     "accordion.label": "Collectibles",
     "accordionItem.label": "NF Tokens"
 }

@@ -82,6 +82,14 @@ function getConfig(isProduction) {
                     options: {
                         transpileOnly: true
                     }
+                },
+                {
+                    test: /\.(png|jpe?g|gif|svg)$/i,
+                    loader: 'url-loader',
+                    options: {
+                        limit: 8192,
+                        outputPath: "img/"
+                    }
                 }
             ]
         },

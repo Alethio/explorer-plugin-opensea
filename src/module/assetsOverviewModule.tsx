@@ -3,7 +3,7 @@ import { ValueBox } from "@alethio/ui/lib/layout/content/box/ValueBox";
 import { SpinnerRegular } from "@alethio/ui/lib/fx/SpinnerRegular";
 import { IModuleDef } from "plugin-api";
 import { IAccountContext } from "../IAccountContext";
-import { IAssetsOverviewProps, AssetsOverview } from "./AssetsOverview";
+import { IAssetsOverviewProps } from "./AssetsOverview";
 import { IOpenSeaAsset } from "../opensea/IOpenSeaAsset";
 import { IPluginConfig } from "../IPluginConfig";
 import { IOpenSeaCollection } from "../opensea/IOpenSeaCollection";
@@ -25,7 +25,7 @@ export const assetsOverviewModule: (config: IPluginConfig) => IModuleDef<IAssets
         alias: "collections"
     }],
 
-    getContentComponent: async () => AssetsOverview,
+    getContentComponent: async () => import("./AssetsOverview").then(({ AssetsOverview }) => AssetsOverview),
 
     getContentProps: ({ asyncData, context, translation, locale, logger }) => {
         let collections = asyncData.get("collections")!.data as IOpenSeaCollection[];

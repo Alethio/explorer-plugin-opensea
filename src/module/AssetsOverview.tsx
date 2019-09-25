@@ -10,6 +10,7 @@ import { LayoutRow } from "@alethio/ui/lib/layout/content/LayoutRow";
 import { LayoutRowItem } from "@alethio/ui/lib/layout/content/LayoutRowItem";
 import { Label } from "@alethio/ui/lib/data/Label";
 import { IAccordionItemConfig } from "@alethio/ui/lib/control/accordion/IAccordionItemConfig";
+import openSeaLogo from "../assets/opensea-logo-flat-colored-blue.svg";
 
 const StyledExternalLink = styled(ExternalLink)`
     color: inherit;
@@ -53,8 +54,8 @@ const ImageContainer = styled.div<IImageContainerProps>`
     padding: ${IMAGE_CONTAINER_PADDING}px;
     box-sizing: border-box;
     background-color: ${props => props.backgroundColor};
-    width: ${CARD_WIDTH}px;
     height: ${CARD_WIDTH}px;
+    text-align: center;
 `;
 
 const TextContainer = styled.div`
@@ -65,7 +66,6 @@ const TextContainer = styled.div`
 `;
 
 const Image = styled.img`
-    width: 100%;
     max-height: 100%;
 `;
 
@@ -93,6 +93,28 @@ const AssetName = styled.div`
     max-height: 28px;
 `;
 
+const Separator = styled.div`
+    border: 1px solid ${props => props.theme.colors.separator};
+    width: 100%;
+    height: 0;
+    margin-right: ${CARD_SPACING}px;
+    margin-bottom: 16px;
+    margin-top: ${24 - CARD_SPACING}px;
+`;
+
+const OPENSEA_LOGO_SIZE = 25;
+
+const ViewAll = styled.div`
+    display: flex;
+    font-size: 18px;
+
+    & > a {
+        font-size: 0; /* Prevents whitespaces from adding to the image height */
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+`;
+
 interface IItemConfig extends IAccordionItemConfig {
     value: number;
     label: string;
@@ -112,6 +134,8 @@ export interface IAssetsOverviewProps {
 export class AssetsOverview extends React.Component<IAssetsOverviewProps> {
     render() {
         let { locale, translation: tr, totalItems, logger } = this.props;
+
+        let [preLink, postLink] = tr.get("viewAll.label").split("{openSeaLink}");
 
         return <AccordionVertical<IItemConfig>
             errorText=""
@@ -136,9 +160,19 @@ export class AssetsOverview extends React.Component<IAssetsOverviewProps> {
                 <CardContainer>
                     { this.props.assets.slice(0, 10).map((asset, i) => this.renderAsset(asset, i)) }
                     { this.props.assets.length > 10 ?
-                    <ExternalLink href={this.getExternalAccountUrl(this.props.accountHash)}>
-                        { tr.get("viewAll.label") }
-                    </ExternalLink>
+                    <>
+                    <Separator />
+                    <ViewAll>
+                        <span>{ preLink }</span>
+                        <ExternalLink href={this.getExternalAccountUrl(this.props.accountHash)}>
+                            <img alt="OpenSea" src={openSeaLogo}
+                                width={83 / 25 * OPENSEA_LOGO_SIZE}
+                                height={OPENSEA_LOGO_SIZE}
+                            />
+                        </ExternalLink>
+                        <span>{ postLink }</span>
+                    </ViewAll>
+                    </>
                     : null }
                 </CardContainer>
             )} />
