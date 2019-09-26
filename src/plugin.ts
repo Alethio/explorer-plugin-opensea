@@ -21,7 +21,7 @@ const plugin: IPlugin = {
     },
 
     getAvailableLocales() {
-        return ["en-US"];
+        return ["en-US", "zh-CN"];
     },
 
     async loadTranslations(locale: string) {
