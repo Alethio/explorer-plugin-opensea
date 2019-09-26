@@ -3,7 +3,7 @@
   "publisher": "aleth.io",
   "pluginName": "opensea",
   "version": "1.0.0",
-  "description": "<plugin_description>",
+  "description": "Alethio Explorer plugin that provides OpenSea integration, such as non-fungible tokens list for accounts.",
   "main": "dist/index.js",
   "scripts": {
     "build": "npm run clean && npm run build-js-prod",
