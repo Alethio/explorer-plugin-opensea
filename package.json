@@ -5,6 +5,9 @@
   "version": "1.0.0",
   "description": "Alethio Explorer plugin that provides OpenSea integration, such as non-fungible tokens list for accounts.",
   "main": "dist/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "npm run clean && npm run build-js-prod",
     "build-dev": "npm run clean && npm run build-js-dev",
