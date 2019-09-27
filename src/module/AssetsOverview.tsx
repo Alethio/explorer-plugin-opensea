@@ -161,8 +161,6 @@ export class AssetsOverview extends React.Component<IAssetsOverviewProps> {
             <AccordionItem<IItemConfig> label={tr.get("accordionItem.label")} value={totalItems} content={async () => (
                 <CardContainer>
                     { this.props.assets.slice(0, 10).map((asset, i) => this.renderAsset(asset, i)) }
-                    { this.props.assets.length > 10 ?
-                    <>
                     <Separator />
                     <ViewAll>
                         <span>{ preLink }</span>
@@ -174,8 +172,6 @@ export class AssetsOverview extends React.Component<IAssetsOverviewProps> {
                         </ExternalLink>
                         <span>{ postLink }</span>
                     </ViewAll>
-                    </>
-                    : null }
                 </CardContainer>
             )} />
         </AccordionVertical>;
