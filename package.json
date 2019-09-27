@@ -2,7 +2,7 @@
   "name": "@alethio/explorer-plugin-opensea",
   "publisher": "aleth.io",
   "pluginName": "opensea",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Alethio Explorer plugin that provides OpenSea integration, such as non-fungible tokens list for accounts.",
   "main": "dist/index.js",
   "publishConfig": {
