@@ -66,7 +66,9 @@ const TextContainer = styled.div`
 `;
 
 const Image = styled.img`
-    max-height: 100%;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
 `;
 
 const ContractIcon = styled.img`

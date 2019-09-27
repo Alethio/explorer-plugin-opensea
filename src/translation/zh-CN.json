@@ -1,5 +1,5 @@
 {
     "viewAll.label": "浏览详细信息：{openSeaLink}",
-    "accordion.label": "收藏品代币",
-    "accordionItem.label": "非同质代币"
+    "accordion.label": "收藏品代币(Collectibles)",
+    "accordionItem.label": "非同质代币(NFTs)"
 }
