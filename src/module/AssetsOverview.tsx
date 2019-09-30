@@ -159,8 +159,8 @@ export class AssetsOverview extends React.Component<IAssetsOverviewProps> {
                     open={item.isOpen} onClick={item.onClick} disabled={!totalItems} />
             }
             renderContent={({ content }) => {
-                return <AccordionContentWrapper><LayoutRow>
-                    <LayoutRowItem autoHeight>
+                return <AccordionContentWrapper><LayoutRow responsive={{ignoreFirstLabel: "forMobile"}}>
+                    <LayoutRowItem autoHeight fullRow>
                         <Label></Label>
                         {content}
                     </LayoutRowItem>
