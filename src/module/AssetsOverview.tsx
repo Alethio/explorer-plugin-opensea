@@ -23,6 +23,7 @@ const AccordionContentWrapper = styled.div`
 const CARD_WIDTH = 200;
 const CARD_SPACING = 16;
 const MAX_CARDS_PER_ROW = 5;
+const MAX_SHOWN_ITEMS = 10;
 
 const CardContainer = styled.div`
     display: flex;
@@ -137,7 +138,15 @@ export class AssetsOverview extends React.Component<IAssetsOverviewProps> {
     render() {
         let { locale, translation: tr, totalItems, logger } = this.props;
 
-        let [preLink, postLink] = tr.get("viewAll.label").split("{openSeaLink}");
+        let preLink: string;
+        let postLink: string;
+        if (totalItems > MAX_SHOWN_ITEMS) {
+            [preLink, postLink] = tr.get("viewMore.label")
+                .replace("{count}", String(totalItems - MAX_SHOWN_ITEMS))
+                .split("{openSeaLink}");
+        } else {
+            [preLink, postLink] = tr.get("view.label").split("{openSeaLink}");
+        }
 
         return <AccordionVertical<IItemConfig>
             errorText=""
@@ -150,8 +159,8 @@ export class AssetsOverview extends React.Component<IAssetsOverviewProps> {
                     open={item.isOpen} onClick={item.onClick} disabled={!totalItems} />
             }
             renderContent={({ content }) => {
-                return <AccordionContentWrapper><LayoutRow>
-                    <LayoutRowItem autoHeight>
+                return <AccordionContentWrapper><LayoutRow responsive={{ignoreFirstLabel: "forMobile"}}>
+                    <LayoutRowItem autoHeight fullRow>
                         <Label></Label>
                         {content}
                     </LayoutRowItem>
@@ -160,9 +169,7 @@ export class AssetsOverview extends React.Component<IAssetsOverviewProps> {
         >
             <AccordionItem<IItemConfig> label={tr.get("accordionItem.label")} value={totalItems} content={async () => (
                 <CardContainer>
-                    { this.props.assets.slice(0, 10).map((asset, i) => this.renderAsset(asset, i)) }
-                    { this.props.assets.length > 10 ?
-                    <>
+                    { this.props.assets.slice(0, MAX_SHOWN_ITEMS).map((asset, i) => this.renderAsset(asset, i)) }
                     <Separator />
                     <ViewAll>
                         <span>{ preLink }</span>
@@ -174,8 +181,6 @@ export class AssetsOverview extends React.Component<IAssetsOverviewProps> {
                         </ExternalLink>
                         <span>{ postLink }</span>
                     </ViewAll>
-                    </>
-                    : null }
                 </CardContainer>
             )} />
         </AccordionVertical>;

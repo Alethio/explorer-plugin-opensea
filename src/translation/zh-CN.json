@@ -1,5 +1,6 @@
 {
-    "viewAll.label": "浏览详细信息：{openSeaLink}",
+    "view.label": "查看详细信息：{openSeaLink}",
+    "viewMore.label": "查看 {count} 条类似商品：{openSeaLink}",
     "accordion.label": "收藏品代币(Collectibles)",
     "accordionItem.label": "非同质代币(NFTs)"
 }
