@@ -11,6 +11,7 @@ import { LayoutRowItem } from "@alethio/ui/lib/layout/content/LayoutRowItem";
 import { Label } from "@alethio/ui/lib/data/Label";
 import { IAccordionItemConfig } from "@alethio/ui/lib/control/accordion/IAccordionItemConfig";
 import openSeaLogo from "../assets/opensea-logo-flat-colored-blue.svg";
+import placeholderImg from "../assets/placeholder.svg";
 
 const StyledExternalLink = styled(ExternalLink)`
     color: inherit;
@@ -200,14 +201,16 @@ export class AssetsOverview extends React.Component<IAssetsOverviewProps> {
         return <StyledExternalLink key={idx} href={this.getExternalAssetUrl(asset)}>
             <Card>
                 <ImageContainer backgroundColor={asset.background_color ? "#" + asset.background_color : void 0}>
-                    <Image src={asset.image_url} alt={asset.name} />
+                    <Image src={asset.image_url || asset.collection.image_url || placeholderImg} alt={asset.name} />
                 </ImageContainer>
                 <TextContainer>
                     <ContractContainer>
+                        { asset.collection.image_url ?
                         <ContractIcon src={asset.collection.image_url} alt={asset.collection.name} />
+                        : null }
                         <ContractName>{ asset.collection.name}</ContractName>
                     </ContractContainer>
-                    <AssetName>{ asset.name }</AssetName>
+                    <AssetName>{ asset.name || (asset.collection.name + " #" + asset.token_id )}</AssetName>
                 </TextContainer>
             </Card>
         </StyledExternalLink>;
