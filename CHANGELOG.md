@@ -1,3 +1,8 @@
+# Unreleased
+
+- Fallback to collection image or generic placeholder for tokens with no image
+- Fallback to collection name + token id for tokens with no name
+
 # v1.0.2
 
 - Always display OpenSea logo. Specific translations based on how many items are shown.
