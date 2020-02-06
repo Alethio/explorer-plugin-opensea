@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "@alethio/ui/lib/styled-components";
 import { IOpenSeaAsset } from "../opensea/IOpenSeaAsset";
-import { ExternalLink } from "plugin-api/component/ExternalLink";
+import { ExternalLink } from "@alethio/ui/lib/control/ExternalLink";
 import { ITranslation, ILogger } from "plugin-api";
 import { AccordionVertical } from "@alethio/ui/lib/control/accordion/AccordionVertical";
 import { AccordionItem } from "@alethio/ui/lib/control/accordion/AccordionItem";

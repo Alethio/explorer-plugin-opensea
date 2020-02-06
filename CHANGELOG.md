@@ -1,3 +1,7 @@
+# v1.0.4
+
+- Add compatibility with @alethio/cms@1.0.0-beta.10+
+
 # v1.0.3
 
 - Fallback to collection image or generic placeholder for tokens with no image
